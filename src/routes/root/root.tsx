@@ -1,27 +1,24 @@
-import { useState } from "react"
+import { useContext } from "react"
+import { Outlet } from "react-router-dom"
+import { TokenContext } from "../../state"
 import { Header } from "./header"
-import { JobForm } from "./job-form"
 import { Login } from "./login"
 
-function App() {
-    const [token, setToken] = useState<string | undefined>()
-    const [error, setError] = useState("")
+export function Root() {
+    const { token } = useContext(TokenContext)
     return (
         <div className="flex flex-row h-screen">
             <div className="flex-1 bg-base-200"></div>
             <div className="w-[800px] bg-base-300 h-screen p-4 flex flex-col space-y-8">
-                {!token && <Login onLogin={setToken} />}
+                {!token && <Login />}
                 {token && (
                     <>
-                        <Header onLogout={() => setToken(undefined)} />
-                        <JobForm token={token} onError={setError} />
+                        <Header />
+                        <Outlet />
                     </>
                 )}
-                {error}
             </div>
             <div className="flex-1 bg-base-200"></div>
         </div>
     )
 }
-
-export default App

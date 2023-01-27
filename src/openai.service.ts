@@ -1,4 +1,9 @@
-export function useOpenAiService(token: string) {
+import { useContext } from "react"
+import { TokenContext } from "./state"
+
+export function useOpenAiService() {
+    const { token } = useContext(TokenContext)
+
     async function textCompletion(props: {
         prompt: string
         maxToken: number

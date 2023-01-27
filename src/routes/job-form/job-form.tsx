@@ -1,9 +1,8 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { HelpBtn } from "./help-btn"
-import { useOpenAiService } from "./openai.service"
+import { useOpenAiService } from "../../openai.service"
 
-export function JobForm(props: { token: string; onError: (err: any) => void }) {
-    const { token, onError } = props
+export function JobForm() {
     const [jobDesc, setJobDesc] = useState("")
     const [salaryComment, setSalaryComment] = useState("")
     const [role, setRole] = useState("Software Developer")
@@ -11,15 +10,7 @@ export function JobForm(props: { token: string; onError: (err: any) => void }) {
     const [location, setLocation] = useState("Melbourne")
     const [salary, setSalary] = useState("")
 
-    const { textCompletion: _textCompletion } = useOpenAiService(token)
-
-    async function textCompletion(props: { prompt: string; maxToken: number }) {
-        try {
-            return await _textCompletion(props)
-        } catch (err) {
-            onError(err)
-        }
-    }
+    const { textCompletion } = useOpenAiService()
 
     async function generateJd() {
         setJobDesc("...")

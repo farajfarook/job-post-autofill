@@ -1,6 +1,8 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { TokenContext } from "../../state"
 
-export function Login(props: { onLogin: (token: string) => void }) {
+export function Login() {
+    const { login } = useContext(TokenContext)
     const [token, setToken] = useState("")
     return (
         <div className="flex flex-col space-y-4">
@@ -13,10 +15,7 @@ export function Login(props: { onLogin: (token: string) => void }) {
                     onChange={(e) => setToken(e.target.value)}
                 />
             </div>
-            <button
-                className="btn btn-primary"
-                onClick={() => props.onLogin(token)}
-            >
+            <button className="btn btn-primary" onClick={() => login(token)}>
                 Login
             </button>
             <div className="card bg-neutral text-neutral-content">
