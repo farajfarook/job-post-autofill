@@ -1,22 +1,18 @@
 import { createContext, ReactNode, useContext, useState } from "react"
 
-interface JobFormStateData {
+interface JobFormState {
     role: string
     location: string
     title: string
     jobDescription: string
     salary: number | undefined
     salaryComments: string
-}
-
-interface JobFormState extends JobFormStateData {
     setRole(role: string): void
     setLocation(location: string): void
     setTitle(title: string): void
     setJobDescription(description: string): void
     setSalary(salary: number): void
     setSalaryComments(salary: string): void
-
     clearAll(): void
 }
 
