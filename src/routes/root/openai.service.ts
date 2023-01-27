@@ -1,8 +1,7 @@
-import { useContext } from "react"
-import { TokenContext } from "./state"
+import { useTokenContext } from "./token.context"
 
 export function useOpenAiService() {
-    const { token } = useContext(TokenContext)
+    const { token } = useTokenContext()
 
     async function textCompletion(props: {
         prompt: string

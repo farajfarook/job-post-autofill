@@ -1,21 +1,21 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { JDAssist } from "./jd-assist"
-import { JobForm } from "./job-form"
-import { Root } from "./root"
+import { JDAssistPage } from "./jd-assist"
+import { JobFormPage } from "./job-form"
+import { RootPage } from "./root"
 
 const router = createBrowserRouter(
     [
         {
             path: "/",
-            element: <Root />,
+            element: <RootPage />,
             children: [
                 {
                     path: "job-form",
-                    element: <JobForm />,
+                    element: <JobFormPage />,
                 },
                 {
                     path: "jd-assist",
-                    element: <JDAssist />,
+                    element: <JDAssistPage />,
                 },
             ],
         },

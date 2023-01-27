@@ -1,8 +1,8 @@
-import { useContext, useState } from "react"
-import { TokenContext } from "../../state"
+import { useState } from "react"
+import { useTokenContext } from "./token.context"
 
 export function Login() {
-    const { login } = useContext(TokenContext)
+    const { login } = useTokenContext()
     const [token, setToken] = useState("")
     return (
         <div className="flex flex-col space-y-4">

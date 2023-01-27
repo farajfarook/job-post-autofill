@@ -1,1 +1,1 @@
-export * from "./js-assist"
+export * from "./js-assist.page"

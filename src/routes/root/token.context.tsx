@@ -1,14 +1,12 @@
-import { createContext, ReactNode, useState } from "react"
+import { createContext, ReactNode, useContext, useState } from "react"
 
-export interface TokenContextState {
+interface TokenState {
     token: string | undefined
     login: (token: string) => void
     logout: () => void
 }
 
-export const TokenContext = createContext<TokenContextState>(
-    {} as TokenContextState
-)
+const TokenContext = createContext<TokenState>({} as TokenState)
 
 export function TokenContextProvider(props: { children: ReactNode }) {
     const [token, setToken] = useState<string | undefined>()
@@ -22,4 +20,8 @@ export function TokenContextProvider(props: { children: ReactNode }) {
             {...props}
         />
     )
+}
+
+export function useTokenContext() {
+    return useContext(TokenContext)
 }

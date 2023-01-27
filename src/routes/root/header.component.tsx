@@ -1,9 +1,8 @@
-import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { TokenContext } from "../../state"
+import { useTokenContext } from "./token.context"
 
 export function Header() {
-    const { logout } = useContext(TokenContext)
+    const { logout } = useTokenContext()
     return (
         <div className="flex flex-row items-center border-b pb-4 border-base-100">
             <div className="flex-1 flex flex-row space-x-2">
